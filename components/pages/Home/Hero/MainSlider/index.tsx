@@ -2,9 +2,8 @@
 
 import Image from 'next/image';
 import { Variants, motion, useAnimationControls } from 'framer-motion';
-import { IGame } from '..';
 import { useHashup } from '@hashup-it/hashup-react-sdk';
-
+import {IGame} from "@/types/game";
 interface IMainSlider {
 	games: IGame[];
 }
@@ -18,37 +17,13 @@ export default function MainSlider({ games }: IMainSlider) {
 				{games !== undefined && (
 					<div className="flex items-center justify-between gap-[8px]">
 						<GameBox
-							name={games[20].name}
-							creator={games[20].creator}
-							price={games[20].price}
-							colors={games[20].colors}
-							media={games[20].media}
-							genres={games[20].genres}
-							platforms={games[20].platforms}
-							chain={games[20].chain}
-							address={games[20].address}
+							game={games[20]}
 						/>
 						<GameBox
-							name={games[21].name}
-							creator={games[21].creator}
-							price={games[21].price}
-							colors={games[21].colors}
-							media={games[21].media}
-							genres={games[21].genres}
-							platforms={games[21].platforms}
-							chain={games[21].chain}
-							address={games[21].address}
+							game={games[21]}
 						/>
 						<GameBox
-							name={games[18].name}
-							creator={games[18].creator}
-							price={games[18].price}
-							colors={games[18].colors}
-							media={games[18].media}
-							genres={games[18].genres}
-							platforms={games[18].platforms}
-							chain={games[18].chain}
-							address={games[18].address}
+							game={games[18]}
 						/>
 					</div>
 				)}
@@ -57,17 +32,13 @@ export default function MainSlider({ games }: IMainSlider) {
 	);
 }
 
+interface IGameBox {
+	game: IGame
+}
+
 function GameBox({
-	name,
-	creator,
-	price,
-	colors,
-	media,
-	genres,
-	platforms,
-	chain,
-	address,
-}: IGame) {
+	game
+}: IGameBox) {
 	const { buyGame } = useHashup();
 	const controls = useAnimationControls();
 	const imageControls = useAnimationControls();
@@ -107,7 +78,7 @@ function GameBox({
 	};
 
 	const handlePurchase = () => {
-		buyGame(address, '100').then((res) => console.log(res));
+		buyGame(game.address, '100').then((res) => console.log(res));
 	};
 
 	return (
@@ -123,7 +94,7 @@ function GameBox({
 				animate={imageControls}
 			>
 				<Image
-					src={media.coverImageUrl}
+					src={game.media.coverImageUrl}
 					alt="cover"
 					fill
 					style={{ objectFit: 'cover' }}
@@ -140,20 +111,20 @@ function GameBox({
 						'mb-[5px] font-bold text-[28px] text-white leading-[26px]'
 					}
 				>
-					{name}
+					{game.name}
 				</span>
 				<div className={'text-[12px]'}>
-					<span className={'text-white'}>{chain}</span>
+					<span className={'text-white'}>{game.chain}</span>
 				</div>
 				<div
 					className={
 						'flex items-start justify-start flex-wrap gap-[4px] w-[80%] mt-[4px]'
 					}
 				>
-					{genres.map((genre: string, idx: number) => (
+					{game.genres.map((genre: string, idx: number) => (
 						<Tag name={genre} key={idx} />
 					))}
-					{platforms.map((platform: string, idx: number) => (
+					{game.platforms.map((platform: string, idx: number) => (
 						<Tag name={platform} key={idx} />
 					))}
 				</div>
@@ -189,7 +160,7 @@ function GameBox({
 							'bg-[#344654] px-[5px] h-[26px] text-[#ffffff] text-[14px] grid place-items-center font-arial'
 						}
 					>
-						{price}
+						{game.price}
 					</div>
 				</div>
 			</motion.div>

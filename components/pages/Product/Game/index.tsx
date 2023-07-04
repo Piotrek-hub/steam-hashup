@@ -26,7 +26,7 @@ export default function Game({ game }: { game: IGame }) {
 					<div className="w-full  flex items-center justify-start  gap-[4px] ">
 						{game?.screenshots?.slice(0, 5).map((ss: string) => {
 							return (
-								<div className="w-[115px] h-[65px] bg-yellow relative">
+								<div className="w-[115px] h-[65px] bg-black relative">
 									<Image src={ss} fill alt="" />
 								</div>
 							);
@@ -79,7 +79,7 @@ export default function Game({ game }: { game: IGame }) {
 							</span>
 							<div className="text-[12px] py-[20px]">
 								<span className="text-[#8f98a0]">
-									{/* TODO: Data wydania */}
+
 									{game?.createdAt.slice(0, 10)}
 								</span>
 							</div>

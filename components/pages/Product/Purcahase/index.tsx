@@ -12,7 +12,7 @@ export default function Purchase({
 	const { buyGame } = useHashup();
 
 	const handlePurchase = () => {
-		buyGame(id, '100');
+		buyGame(id, '100').then(res => console.log(res));
 	};
 	return (
 		<div className="bg-purchaseGradient mx-auto relative h-[95px]  p-[16px] w-full rounded-[6px]">

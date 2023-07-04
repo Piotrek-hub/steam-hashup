@@ -1,5 +1,5 @@
+// @ts-ignore
 import { MetaMaskSDK } from '@metamask/sdk';
-
 import { useState } from 'react';
 
 const MMSDK = new MetaMaskSDK();

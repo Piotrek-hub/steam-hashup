@@ -2,6 +2,7 @@
 
 import WalletConnect from '@/components/shared/WalletConnect';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 enum MenuOption {
@@ -13,11 +14,15 @@ enum MenuOption {
 
 export default function Navbar() {
 	const [menuChoice, setMenuChoice] = useState<MenuOption>(MenuOption.STORE);
+	const router = useRouter();
 
 	return (
 		<div className="w-full bg-[#171d25]">
 			<div className="max-w-[940px] mx-auto flex items-center justify-between py-[25px]">
-				<div className="relative w-[180px] h-[50px]">
+				<div
+					className="relative w-[180px] h-[50px] cursor-pointer"
+					onClick={() => router.push('/')}
+				>
 					<Image
 						src="/assets/hashup.svg"
 						alt="hashup logo"

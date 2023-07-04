@@ -39,7 +39,10 @@ module.exports = {
         gradientLibraryBackground: " radial-gradient(farthest-corner at 40px 40px,#3D4450 0%, #23262E 80%)",
         storeNavigationGradient: "linear-gradient(90deg, rgba(62, 103, 150, 0.919) 11.38%, rgba(58, 120, 177, 0.8) 25.23%, rgb(15, 33, 110) 100%)",
         gameBoxGradient: "linear-gradient( 315deg, #213c55 5%, #016968 95%)",
-        buttonGradient: "linear-gradient( to bottom, #a4d007 5%, #536904 95%)"
+        buttonGradient: "linear-gradient( to bottom, #a4d007 5%, #536904 95%)",
+        secondButtonGradient: "linear-gradient( to right, #75b022 5%, #588a1b 95%)",
+        gameGradient: "linear-gradient(to right, rgba(0,0,0,0) 50%,rgba(0,0,0,0.4) 100%)",
+        purchaseGradient: "linear-gradient( -60deg, rgba(226,244,255,0.3) 5%,rgba(84, 107, 115, 0.3) 95%)"
       }
     },
   },

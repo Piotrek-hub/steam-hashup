@@ -1,12 +1,15 @@
 import { Variants, motion, useAnimationControls } from 'framer-motion';
-import { IGame } from '..';
+
 import Image from 'next/image';
 import { useHashup } from '@hashup-it/hashup-react-sdk';
+import { IGame } from '@/types/game';
+import { useRouter } from 'next/navigation';
 interface IGamesGrid {
 	games: IGame[];
 }
 
 export default function GamesGrid({ games }: IGamesGrid) {
+	console.log(games[16]);
 	return (
 		<div className=" w-[1150px]  mx-auto h-auto flex justify-start items-start flex-col gap-[16px]">
 			<div className="h-[180px] flex items-center justify-between gap-[16px] w-full">
@@ -120,8 +123,10 @@ function GameBox({
 	};
 
 	const handleClick = () => {
-		buyGame(address, '1').then((res) => console.log(res));
+		router.push(`/product/${address}`);
 	};
+
+	const router = useRouter();
 
 	return (
 		<div

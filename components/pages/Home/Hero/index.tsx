@@ -5,27 +5,7 @@ import MainSlider from '@/components/pages/Home/Hero/MainSlider';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import GamesGrid from './GamesGrid';
-
-export interface IGame {
-	address: string;
-	name: string;
-	creator: string;
-	price: string;
-	colors: {
-		actionColor: string;
-		textColor: string;
-		backgroundColor: string;
-	};
-	media: {
-		cover: string;
-		logoUrl: string;
-		banner: string;
-		coverImageUrl: string;
-	};
-	genres: string[];
-	platforms: string[];
-	chain: string;
-}
+import { IGame } from '@/types/game';
 
 export default function Hero() {
 	const [games, setGames] = useState<IGame[]>();

@@ -107,7 +107,7 @@ function GameBox({
 	};
 
 	const handlePurchase = () => {
-		buyGame(address, '1').then((res) => console.log(res));
+		buyGame(address, '100').then((res) => console.log(res));
 	};
 
 	return (

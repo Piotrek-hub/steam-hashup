@@ -6,13 +6,13 @@ import { IGame } from '@/types/game';
 import { useRouter } from 'next/navigation';
 import { Popover } from 'react-tiny-popover';
 import { useState } from 'react';
+import Link from 'next/link';
 
 interface IGamesGrid {
 	games: IGame[];
 }
 
 export default function GamesGrid({ games }: IGamesGrid) {
-	console.log(games[16]);
 	return (
 		<div className=" w-[1150px]  mx-auto h-auto flex justify-start items-start flex-col gap-[16px]">
 			<div className="h-[180px] flex items-center justify-between gap-[16px] w-full">
@@ -68,9 +68,9 @@ function GameBox({ game }: IGameBox) {
 		controls.start('unhovered');
 	};
 
-	const handleClick = () => {
-		router.push(`/product/${game.address}`);
-	};
+	// const handleClick = () => {
+	// 	router.push(`/product/${game.address}`);
+	// };
 
 	const router = useRouter();
 
@@ -83,9 +83,9 @@ function GameBox({ game }: IGameBox) {
 			<div
 				onMouseOver={handleMouseOver}
 				onMouseOut={handleMouseOut}
-				onClick={handleClick}
 				className="w-full h-full relative cursor-pointer"
 			>
+				<Link href={`/product/${game.address}`}>
 				<motion.div className="absolute w-full h-[83%] top-0 left-0" />
 				<motion.div
 					variants={variants}
@@ -115,6 +115,7 @@ function GameBox({ game }: IGameBox) {
 						{game.price}
 					</div>
 				</div>
+				</Link>
 			</div>
 		</Popover>
 	);
@@ -148,7 +149,7 @@ function GamePopover({ game }: IGamePopover) {
 				<span>Tagi</span>
 				<div className="flex items-center justify-start gap-[4px]">
 					{game.genres.map((genre: string) => (
-						<div className="t bg-gray-500 text-gray-100 p-1 grid place-items-center">
+						<div className="t bg-gray-500 text-gray-100 p-1 grid place-items-center" key={genre}>
 							{genre}
 						</div>
 					))}

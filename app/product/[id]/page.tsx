@@ -19,9 +19,6 @@ export default function Page({ params }: { params: { id: string } }) {
 			});
 	}, []);
 
-	useEffect(() => {
-		console.log(game?.video?.split('=')[1]);
-	}, [game]);
 	return (
 		<div>
 			<Navbar />

@@ -1,3 +1,6 @@
+"use client"
+
+import { EthereumProvider } from '@/providers/Ethereum/ethereumProvider';
 import './globals.css';
 
 export default function RootLayout({
@@ -7,7 +10,11 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en">
-			<body>{children}</body>
+			<body>
+				<EthereumProvider>
+				{children}
+				</EthereumProvider>
+			</body>
 		</html>
 	);
 }

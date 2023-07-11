@@ -1,22 +1,24 @@
-// @ts-ignore
-import { MetaMaskSDK } from '@metamask/sdk';
-import { useState } from 'react';
-
-const MMSDK = new MetaMaskSDK();
-
-const ethereum = MMSDK.getProvider();
+import { useEthereumProvider } from '@/providers/Ethereum/ethereumProvider';
+import { useEffect, useState } from 'react';
 
 export default function WalletConnect() {
 	const [isConnected, setIsConnected] = useState<boolean>(false);
 
+	const ethereum = useEthereumProvider();
+
+	useEffect(() => {
+		setIsConnected(ethereum.isConnected)
+	}, [ethereum.isConnected])
+
 	const handleConnect = () => {
+		console.log(ethereum)
 		if (isConnected) {
 			setIsConnected(false);
 			return;
 		}
 
 		try {
-			ethereum.request({ method: 'eth_requestAccounts', params: [] });
+			ethereum.connect();
 			setIsConnected(true);
 		} catch (e) {
 			console.log(e);

@@ -4,7 +4,7 @@ import { trimAddress } from '@/utils/address';
 import Image from 'next/image';
 
 export default function Game({ game }: { game: IGame }) {
-	console.log(game);
+12
 	return (
 		<div className="w-[940px] h-[440px] ">
 			<div className="py-[12px]">
@@ -26,7 +26,7 @@ export default function Game({ game }: { game: IGame }) {
 					<div className="w-full  flex items-center justify-start  gap-[4px] ">
 						{game?.screenshots?.slice(0, 5).map((ss: string) => {
 							return (
-								<div className="w-[115px] h-[65px] bg-black relative">
+								<div className="w-[115px] h-[65px] bg-black relative" key={ss}>
 									<Image src={ss} fill alt="" />
 								</div>
 							);
@@ -101,7 +101,7 @@ export default function Game({ game }: { game: IGame }) {
 							</span>
 							<div className="flex items-start justify-start gap-[6px] mt-[5px]">
 								{game?.genres.map((genre) => (
-									<span className="text-[#66C0F4] text-[12px] px-[7px] bg-[#233C4E]">
+									<span className="text-[#66C0F4] text-[12px] px-[7px] bg-[#233C4E]" key={genre}>
 										{genre}
 									</span>
 								))}

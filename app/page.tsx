@@ -1,3 +1,5 @@
+"use client"
+
 import Navbar from '@/components/global/Navbar';
 import Hero from '@/components/pages/Home/Hero';
 

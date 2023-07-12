@@ -1,9 +1,7 @@
 import { Variants, motion, useAnimationControls } from 'framer-motion';
 
 import Image from 'next/image';
-import { useHashup } from '@hashup-it/hashup-react-sdk';
 import { IGame } from '@/types/game';
-import { useRouter } from 'next/navigation';
 import { Popover } from 'react-tiny-popover';
 import { useState } from 'react';
 import Link from 'next/link';
@@ -47,7 +45,6 @@ interface IGameBox {
 
 function GameBox({ game }: IGameBox) {
 	const controls = useAnimationControls();
-	const { buyGame } = useHashup();
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 
 	const variants: Variants = {
@@ -72,7 +69,6 @@ function GameBox({ game }: IGameBox) {
 	// 	router.push(`/product/${game.address}`);
 	// };
 
-	const router = useRouter();
 
 	return (
 		<Popover

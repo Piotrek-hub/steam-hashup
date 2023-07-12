@@ -11,7 +11,7 @@ export default function WalletConnect() {
 	}, [ethereum.isConnected])
 
 	const handleConnect = () => {
-		console.log(ethereum)
+		console.log("ETHEREUM: ", ethereum)
 		if (isConnected) {
 			setIsConnected(false);
 			return;
@@ -21,7 +21,7 @@ export default function WalletConnect() {
 			ethereum.connect();
 			setIsConnected(true);
 		} catch (e) {
-			console.log(e);
+			console.log("ERROR WHILE CONNECTING: ", e);
 		}
 	};
 	return (

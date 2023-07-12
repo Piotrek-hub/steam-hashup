@@ -18,7 +18,7 @@ export default function Hero() {
 					setGames(res);
 				});
 		} catch (e) {
-			console.log(e);
+			console.log("EE: ", e);
 		}
 	}, []);
 

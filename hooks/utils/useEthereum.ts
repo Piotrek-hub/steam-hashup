@@ -1,5 +1,6 @@
 
 
+import buyLicense from "@/lib/hashup-sdk";
 import { ethers } from "ethers";
 import { useEffect, useState } from "react"
 
@@ -9,6 +10,7 @@ export interface IUseEthereum {
     address: string | null,
     isConnected: boolean,
     connect: () => void,
+    buyGame: (license: string, amount: number)  => void,
 }
 
 export const emptyEthereum: IUseEthereum = {
@@ -16,7 +18,8 @@ export const emptyEthereum: IUseEthereum = {
     signer: null,
     address: null,
     isConnected: false,
-    connect: () => console.log("connect of emptyEthereum")
+    connect: () => console.log("connect of emptyEthereum"),
+    buyGame: (license: string, amount: number)  => console.log("buy game of emptyEthereum")
 }
 
 
@@ -26,6 +29,10 @@ export const useEthereum = (): IUseEthereum => {
     const [address, setAddress] = useState<string | null>(null)
     const [isConnected, setIsConnected] = useState<boolean>(false)
 
+
+    useEffect(() => {
+        connect();
+    }, [])
 
     const connect = () => {
         if(typeof window === 'undefined') {
@@ -44,11 +51,20 @@ export const useEthereum = (): IUseEthereum => {
         setIsConnected(true)
     }
 
+    const buyGame = (license: string, amount: number) => {
+        if(signer !== null) {
+            buyLicense(signer, license, amount).then(console.log)
+        }else {
+            console.error("SIGNER IS NULL")
+        }
+    }
+
     return {
         provider,
         signer,
         address,
         isConnected,
-        connect
+        connect,
+        buyGame
     }
 }

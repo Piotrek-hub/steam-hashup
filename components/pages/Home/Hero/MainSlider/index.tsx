@@ -2,8 +2,9 @@
 
 import Image from 'next/image';
 import { Variants, motion, useAnimationControls } from 'framer-motion';
-import { useHashup } from '@hashup-it/hashup-react-sdk';
+
 import {IGame} from "@/types/game";
+import { useEthereum } from '@/hooks/utils/useEthereum';
 interface IMainSlider {
 	games: IGame[];
 }
@@ -39,7 +40,7 @@ interface IGameBox {
 function GameBox({
 	game
 }: IGameBox) {
-	const { buyGame } = useHashup();
+	const {buyGame} = useEthereum();
 	const controls = useAnimationControls();
 	const imageControls = useAnimationControls();
 
@@ -78,7 +79,7 @@ function GameBox({
 	};
 
 	const handlePurchase = () => {
-		buyGame(game.address, '100').then((res) => console.log(res));
+		buyGame(game.address, 100)
 	};
 
 	return (

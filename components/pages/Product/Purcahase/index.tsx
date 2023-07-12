@@ -1,4 +1,7 @@
-import { useHashup } from '@hashup-it/hashup-react-sdk';
+"use client"
+
+import { useEthereum } from "@/hooks/utils/useEthereum";
+
 
 export default function Purchase({
 	name,
@@ -9,10 +12,10 @@ export default function Purchase({
 	id: string;
 	price: string;
 }) {
-	const { buyGame } = useHashup();
+	const { buyGame } = useEthereum();
 
 	const handlePurchase = () => {
-		buyGame(id, '100').then(res => console.log(res));
+		buyGame(id, 100)
 	};
 	return (
 		<div className="bg-purchaseGradient mx-auto relative h-[95px]  p-[16px] w-full rounded-[6px]">
